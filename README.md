@@ -4,6 +4,10 @@
 
 ## Build Setup
 
+# 사용한 모듈
+# 1. bootstrap-vue
+$ npm install bootstrap-vue
+
 ``` bash
 # install dependencies
 $ npm install # Or yarn install

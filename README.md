@@ -1,8 +1,11 @@
 # chat-project
 
 > Nuxt.js project
+
 > Slack-like
+
 > Bootstrap-vue
+
 > Babel.js
 
 ## Build Setup

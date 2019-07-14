@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.26",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-awesome": "^3.5.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

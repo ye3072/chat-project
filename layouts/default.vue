@@ -1,12 +1,41 @@
 <template>
   <div>
-    <b-jumbotron header="BootstrapVue" lead="Bootstrap v4 Components for Vue.js 2">
-      <p>For more information visit website</p>
-      <b-button variant="primary" href="#">More Info</b-button>
-    </b-jumbotron>
-    <nuxt/>
+    <b-row>
+      <b-col cols="3">
+        <b-list-group>
+          <b-list-group-item>Channels</b-list-group-item>
+          <b-list-group-item v-for="channel in channels" :key="channel.id" href=""><Icon name="angle-right"/>{{channel.title}}</b-list-group-item>
+          <b-list-group-item>Direct Messages</b-list-group-item>
+          <b-list-group-item v-for="message in messages" :key="message.id" href=""><Icon name="comment"/>{{message.opponent}}</b-list-group-item>
+        </b-list-group>
+      </b-col>
+      <b-col cols="9">
+        <nuxt/>
+      </b-col>
+    </b-row>
   </div>
 </template>
+
+<script>
+  export default {
+    data: function() {
+      return {
+        channels: [
+          {id: 1, title: 'general'},
+          {id: 2, title: 'article'},
+          {id: 3, title: 'daejeon'},
+          {id: 4, title: 'seoul'}
+        ],
+        messages: [
+          {id: 1, opponent: 'amy'},
+          {id: 2, opponent: 'ashley'},
+          {id: 3, opponent: 'edsheeran'},
+          {id: 4, opponent: 'tony'}
+        ]
+      }
+    } 
+  }
+</script>
 
 <style>
 html {
@@ -52,6 +81,10 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.fa-icon {
+  margin-right: 5px;
 }
 </style>
 

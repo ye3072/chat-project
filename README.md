@@ -1,6 +1,9 @@
 # chat-project
 
 > Nuxt.js project
+> Slack-like
+> Bootstrap-vue
+> Babel.js
 
 ## Build Setup
 
@@ -8,6 +11,10 @@
 # 사용한 모듈
 # 1. bootstrap-vue
 $ npm install bootstrap-vue
+# 2. vue-awesome
+$ npm install vue-awesome (recommended)
+or
+$ bower install vue-awesome
 
 # install dependencies
 $ npm install # Or yarn install

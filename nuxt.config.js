@@ -33,7 +33,9 @@ module.exports = {
                     exclude: /(node_modules)/
                 })
             }
-        }
+        },
+        transpile: [/vue-awesome/]
     },
+    plugins: ['~/plugins/vue-awesome.js'],
     modules: ['bootstrap-vue/nuxt']
 }

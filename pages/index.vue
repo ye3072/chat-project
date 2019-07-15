@@ -1,7 +1,7 @@
 <template>
     <div>
       <b-row>
-      <b-col cols="3">
+      <b-col cols="3" class="pd0">
         <b-list-group>
           <b-list-group-item class="bold aligncenter"><Icon name="user"/>YEONGEUN LEE<br>
             <b-input-group>
@@ -14,15 +14,19 @@
         </b-list-group>
         <b-list-group>
           <b-list-group-item class="bold">Channels</b-list-group-item>
-          <b-list-group-item v-for="channel in channels" :key="channel.id"><Icon name="bookmark"/>{{channel.title}}</b-list-group-item>
+          <b-list-group-item class="pointer" v-for="channel in channels" :key="channel.id" v-on:click="getTitle('bookmark', channel.title)"><Icon name="bookmark"/>
+            {{channel.title}}
+          </b-list-group-item>
           <b-list-group-item class="bold"><Icon name="plus"/>Add a channel</b-list-group-item>
-          <b-list-group-item class="bold">Direct Messages</b-list-group-item>
+          <b-list-group-item class="bold">Direct Messages</b-list-group-item> 
           <b-list-group-item><Icon name="heart" style="color:red;"/>Chatbot</b-list-group-item>
-          <b-list-group-item v-for="message in messages" :key="message.id"><Icon name="comment"/>{{message.opponent}}</b-list-group-item>
+          <b-list-group-item class="pointer" v-for="message in messages" :key="message.id" v-on:click="getTitle('comment', message.opponent)"><Icon name="comment"/>
+            {{message.opponent}}
+          </b-list-group-item>
         </b-list-group>
       </b-col>
-      <b-col cols="9">
-        <chat-box/>
+      <b-col cols="9" class="pd0">
+        <chat-title v-bind:title="title" v-bind:icon="icon"/>
       </b-col>
     </b-row>
     </div>
@@ -30,10 +34,12 @@
 
 <script>
 import ChatBox from '~/components/ChatBox.vue'
+import ChatTitle from '~/components/ChatTitle.vue'
 
 export default {
     components: {
-      ChatBox
+      ChatBox,
+      ChatTitle
     },
     data: function() {
       return {
@@ -49,7 +55,14 @@ export default {
           {id: 3, opponent: 'edsheeran'},
           {id: 4, opponent: 'tony'}
         ],
-        test: 'test값'
+        title: 'let\'s talk!',
+        icon: null
+      }
+    },
+    methods: {
+      getTitle: function(icon, title) {
+        this.title = title
+        this.icon = icon
       }
     }
   }
@@ -108,6 +121,15 @@ export default {
 
 .aligncenter {
   text-align: center;
+}
+
+.pd0 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>
 

@@ -3,9 +3,21 @@
     <b-row>
       <b-col cols="3">
         <b-list-group>
-          <b-list-group-item>Channels</b-list-group-item>
-          <b-list-group-item v-for="channel in channels" :key="channel.id" href=""><Icon name="angle-right"/>{{channel.title}}</b-list-group-item>
-          <b-list-group-item>Direct Messages</b-list-group-item>
+          <b-list-group-item class="bold aligncenter"><Icon name="user"/>YEONGEUN LEE<br>
+            <b-input-group>
+              <b-form-input></b-form-input>
+              <b-input-group-append>
+                <b-button><Icon name="search" style="margin-top:-5px;"/></b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </b-list-group-item>
+        </b-list-group>
+        <b-list-group>
+          <b-list-group-item class="bold">Channels</b-list-group-item>
+          <b-list-group-item v-for="channel in channels" :key="channel.id" href="/channel"><Icon name="bookmark"/>{{channel.title}}</b-list-group-item>
+          <b-list-group-item class="bold"><Icon name="plus"/>Add a channel</b-list-group-item>
+          <b-list-group-item class="bold">Direct Messages</b-list-group-item>
+          <b-list-group-item><Icon name="heart" style="color:red;"/>Chatbot</b-list-group-item>
           <b-list-group-item v-for="message in messages" :key="message.id" href=""><Icon name="comment"/>{{message.opponent}}</b-list-group-item>
         </b-list-group>
       </b-col>
@@ -85,6 +97,26 @@ html {
 
 .fa-icon {
   margin-right: 5px;
+  margin-left: 5px;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.input-group {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.form-control, .input-group-append .btn {
+  height: 2em;
+  margin-top: 0.3em;
+}
+
+.aligncenter {
+  text-align: center;
+}
+
 </style>
 

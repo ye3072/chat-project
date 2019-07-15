@@ -1,35 +1,58 @@
 <template>
-  <section class="container">
     <div>
-      <app-logo/>
-      <h1 class="title">
-        chat-project
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <b-row>
+      <b-col cols="3">
+        <b-list-group>
+          <b-list-group-item class="bold aligncenter"><Icon name="user"/>YEONGEUN LEE<br>
+            <b-input-group>
+              <b-form-input></b-form-input>
+              <b-input-group-append>
+                <b-button><Icon name="search" style="margin-top:-5px;"/></b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </b-list-group-item>
+        </b-list-group>
+        <b-list-group>
+          <b-list-group-item class="bold">Channels</b-list-group-item>
+          <b-list-group-item v-for="channel in channels" :key="channel.id"><Icon name="bookmark"/>{{channel.title}}</b-list-group-item>
+          <b-list-group-item class="bold"><Icon name="plus"/>Add a channel</b-list-group-item>
+          <b-list-group-item class="bold">Direct Messages</b-list-group-item>
+          <b-list-group-item><Icon name="heart" style="color:red;"/>Chatbot</b-list-group-item>
+          <b-list-group-item v-for="message in messages" :key="message.id"><Icon name="comment"/>{{message.opponent}}</b-list-group-item>
+        </b-list-group>
+      </b-col>
+      <b-col cols="9">
+        <chat-box/>
+      </b-col>
+    </b-row>
     </div>
-  </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import ChatBox from '~/components/ChatBox.vue'
 
 export default {
-  components: {
-    AppLogo
+    components: {
+      ChatBox
+    },
+    data: function() {
+      return {
+        channels: [
+          {id: 1, title: 'general'},
+          {id: 2, title: 'article'},
+          {id: 3, title: 'daejeon'},
+          {id: 4, title: 'seoul'}
+        ],
+        messages: [
+          {id: 1, opponent: 'amy'},
+          {id: 2, opponent: 'ashley'},
+          {id: 3, opponent: 'edsheeran'},
+          {id: 4, opponent: 'tony'}
+        ],
+        test: 'test값'
+      }
+    }
   }
-}
 </script>
 
 <style>
@@ -60,6 +83,31 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+
+
+.fa-icon {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.input-group {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.form-control, .input-group-append .btn {
+  height: 2em;
+  margin-top: 0.3em;
+}
+
+.aligncenter {
+  text-align: center;
 }
 </style>
 

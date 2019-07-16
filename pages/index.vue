@@ -1,45 +1,58 @@
 <template>
     <div>
       <b-row>
-      <b-col cols="3" class="pd0">
-        <b-list-group>
-          <b-list-group-item class="bold aligncenter"><Icon name="user"/>YEONGEUN LEE<br>
-            <b-input-group>
-              <b-form-input></b-form-input>
-              <b-input-group-append>
-                <b-button><Icon name="search" style="margin-top:-5px;"/></b-button>
-              </b-input-group-append>
-            </b-input-group>
-          </b-list-group-item>
-        </b-list-group>
-        <b-list-group>
-          <b-list-group-item class="bold">Channels</b-list-group-item>
-          <b-list-group-item class="pointer" v-for="channel in channels" :key="channel.id" v-on:click="getTitle('bookmark', channel.title)"><Icon name="bookmark"/>
-            {{channel.title}}
-          </b-list-group-item>
-          <b-list-group-item class="bold"><Icon name="plus"/>Add a channel</b-list-group-item>
-          <b-list-group-item class="bold">Direct Messages</b-list-group-item> 
-          <b-list-group-item><Icon name="heart" style="color:red;"/>Chatbot</b-list-group-item>
-          <b-list-group-item class="pointer" v-for="message in messages" :key="message.id" v-on:click="getTitle('comment', message.opponent)"><Icon name="comment"/>
-            {{message.opponent}}
-          </b-list-group-item>
-        </b-list-group>
-      </b-col>
-      <b-col cols="9" class="pd0">
-        <chat-title v-bind:title="title" v-bind:icon="icon"/>
-      </b-col>
-    </b-row>
+        <b-col cols="3" class="pd0">
+          <b-list-group>
+            <b-list-group-item class="bold aligncenter"><Icon name="user"/>YEONGEUN LEE<br>
+              <b-input-group>
+                <b-form-input></b-form-input>
+                <b-input-group-append>
+                  <b-button><Icon name="search" style="margin-top:-5px;"/></b-button>
+                </b-input-group-append>
+              </b-input-group>
+            </b-list-group-item>
+          </b-list-group>
+          <b-list-group>
+            <b-list-group-item class="bold">Channels</b-list-group-item>
+            <b-list-group-item class="pointer" v-for="channel in channels" :key="channel.id" v-on:click="getTitle('hashtag', channel.title)"><Icon name="hashtag"/>
+              {{channel.title}}
+            </b-list-group-item>
+            <b-list-group-item class="bold"><Icon name="plus"/>Add a channel</b-list-group-item>
+            <b-list-group-item class="bold">Direct Messages</b-list-group-item> 
+            <b-list-group-item><Icon name="heart" style="color:red;"/>Chatbot</b-list-group-item>
+            <b-list-group-item class="pointer" v-for="message in messages" :key="message.id" v-on:click="getTitle('comment', message.opponent)"><Icon name="comment"/>
+              {{message.opponent}}
+            </b-list-group-item>
+          </b-list-group>
+        </b-col>
+        <b-col cols="9" class="pd0">
+          <chat-title v-bind:title="title" v-bind:icon="icon"/>
+          <div style="height:80%;">
+            <b-card-body ref="content" style="position:relative; height:100%; overflow-y:scroll;
+                        border:1px solid black;">
+              
+            </b-card-body>
+          </div>
+          <div style="height:10%;width:100%;display:table;">
+            <chat-text/>
+          </div>
+        </b-col>
+      </b-row>
     </div>
 </template>
 
 <script>
-import ChatBox from '~/components/ChatBox.vue'
 import ChatTitle from '~/components/ChatTitle.vue'
+import ChatBody from '~/components/ChatBody.vue'
+import ChatBox from '~/components/ChatBox.vue'
+import ChatText from '~/components/ChatText.vue'
 
 export default {
     components: {
       ChatBox,
-      ChatTitle
+      ChatTitle,
+      ChatBody,
+      ChatText
     },
     data: function() {
       return {
@@ -68,7 +81,7 @@ export default {
   }
 </script>
 
-<style>
+<style scoped>
 .container {
   min-height: 100vh;
   display: flex;
@@ -97,8 +110,6 @@ export default {
 .links {
   padding-top: 15px;
 }
-
-
 
 .fa-icon {
   margin-right: 5px;

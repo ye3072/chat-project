@@ -34,7 +34,7 @@
             </b-card-body>
           </div>
           <div style="height:10%;width:100%;display:table;">
-            <chat-text/>
+            <chat-text v-bind:placeholder="placeholder"/>
           </div>
         </b-col>
       </b-row>
@@ -69,13 +69,19 @@ export default {
           {id: 4, opponent: 'tony'}
         ],
         title: 'let\'s talk!',
-        icon: null
+        icon: null,
+        placeholder: 'choose channel'
       }
     },
     methods: {
       getTitle: function(icon, title) {
         this.title = title
         this.icon = icon
+        if(icon === 'hashtag') {
+          this.placeholder = 'Message # ' + title
+        } else {
+          this.placeholder = 'Message ' + title
+        }
       }
     }
   }

@@ -6,7 +6,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style="color:rgb(125,125,125);"><Icon name="plus"/></div>
             </div>
-            <b-input id="inline-form-input-username" style="border-right:0px;" v-bind:placeholder="placehd"></b-input>
+            <b-input id="inline-form-input-username" style="border-right:0px;" v-bind:placeholder="placeholder"></b-input>
             <div class="input-group-append">
                 <div class="input-group-text emo"><Icon name="smile"/></div>
             </div>
@@ -17,17 +17,7 @@
 
 <script>
 export default {
-    props: ['placeholder'],
-    data: function() {
-        return {
-            /* 
-            
-            이게 왜 동기화가 안되는 지 모르겠음!! 
-            
-            */
-            placehd: this.$props.placeholder
-        }
-    }
+    props: ['placeholder']
 }
 </script>
 

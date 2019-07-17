@@ -30,7 +30,8 @@
           <div style="height:80%;">
             <b-card-body ref="content" style="position:relative; height:100%; overflow-y:scroll;
                         border:1px solid black;">
-              
+              <chat-body/>
+              <chat-body/>
             </b-card-body>
           </div>
           <div style="height:10%;width:100%;display:table;">

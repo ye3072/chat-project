@@ -80,7 +80,7 @@ export default {
         if(icon === 'hashtag') {
           this.placeholder = 'Message # ' + title
         } else {
-          this.placeholder = 'Message ' + title
+          this.placeholder = 'Message to ' + title
         }
       }
     }

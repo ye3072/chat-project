@@ -1,10 +1,12 @@
 <template>
-    <div style="position:absolute; bottom:20px; width:97%;">
-        <b-card>
+    <div style="bottom:20px; width:100%;">
+        <b-card v-for="message in messages" :key="message.id" > 
             <b-media>
-            <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
-
-            <h5 class="mt-0">Media Title</h5>
+            <b-img src="message.img" slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
+            <div style="display:inline;">
+                <span class="mr-2" style="font-weight:bold;font-size:1.4em;">{{ message.name }}</span>
+                <span style="font-size:0.8em;">{{ message.time }}</span>
+            </div>
             <p>
                 
             </p>
@@ -32,9 +34,10 @@ export default {
     data: function() {
         return {
             messages: [
-                {id: '1', name: 'amy', img: 'src_amy', time:'07-17 2:12 pm', content: 'Hello'},
-                {id: '2', name: 'paul', img: 'src_paul', time:'07-17 2:15 pm', content: 'How are you?'},
-                {id: '3', name: 'amy', img: 'src_amy', time:'07-17 2:17 pm', content: 'Good, thanx.'}
+                {id: '1', name: 'amy', img: '~/assets/src_amy.png', time:'07-17 2:12 pm', content: 'Hello'},
+                {id: '2', name: 'paul', img: '~/assets/src_paul.png', time:'07-17 2:15 pm', content: 'How are you?'},
+                {id: '3', name: 'amy', img: '~/assets/src_amy.png', time:'07-17 2:17 pm', content: 'Good, thanx.'},
+                {id: '4', name: 'paul', img: '~/assets/src_paul.png', time:'07-17 2:21 pm', content: 'How are you?'}
             ]
         }
     }

@@ -27,10 +27,9 @@
         </b-col>
         <b-col cols="9" class="pd0">
           <chat-title v-bind:title="title" v-bind:icon="icon"/>
-          <div style="height:80%;">
-            <b-card-body ref="content" style="position:relative; height:100%; overflow-y:scroll;
-                        border:1px solid black;">
-              <chat-body/>
+          <div style="height:80%; overflow-y:scroll;">
+            <b-card-body ref="content" style="position:relative; height:100%; width:100%; overflow-y:scroll;
+                        float:left;">
               <chat-body/>
             </b-card-body>
           </div>
@@ -45,12 +44,10 @@
 <script>
 import ChatTitle from '~/components/ChatTitle.vue'
 import ChatBody from '~/components/ChatBody.vue'
-import ChatBox from '~/components/ChatBox.vue'
 import ChatText from '~/components/ChatText.vue'
 
 export default {
     components: {
-      ChatBox,
       ChatTitle,
       ChatBody,
       ChatText
@@ -112,6 +109,10 @@ export default {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+.list-group-item {
+  border: 0px;
 }
 
 .links {

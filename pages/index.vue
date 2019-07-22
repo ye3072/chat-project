@@ -15,13 +15,13 @@
           <b-list-group>
             <b-list-group-item class="bold">Channels</b-list-group-item>
             <b-list-group-item class="pointer" v-for="channel in channels" :key="channel.id" v-on:click="getTitle('hashtag', channel.title)"><Icon name="hashtag"/>
-              {{channel.title}}
+              {{ channel.title }}
             </b-list-group-item>
             <b-list-group-item class="bold"><Icon name="plus"/>Add a channel</b-list-group-item>
             <b-list-group-item class="bold">Direct Messages</b-list-group-item> 
             <b-list-group-item><Icon name="heart" style="color:red;"/>Chatbot</b-list-group-item>
             <b-list-group-item class="pointer" v-for="message in messages" :key="message.id" v-on:click="getTitle('comment', message.opponent)"><Icon name="comment"/>
-              {{message.opponent}}
+              {{ message.opponent }}
             </b-list-group-item>
           </b-list-group>
         </b-col>
@@ -68,7 +68,8 @@ export default {
       ChatBody
     },
     updated: function() {
-      document.querySelector('.card-body').scrollTo(0, document.querySelector('.card-body').scrollHeight) 
+      var cardBody = document.querySelector('.card-body');
+      cardBody.scrollTo(0, cardBody.scrollHeight) 
     },
     data: function() {
       return {
@@ -119,7 +120,6 @@ export default {
                               time: tmp_time, 
                               content: this.chatInput});
         this.chatInput = null;
-           
       }
     }
   }

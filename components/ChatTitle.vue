@@ -2,12 +2,7 @@
     <div>
         <b-navbar toggleable="lg" type="dark" variant="dark">
             <b-navbar-brand>
-                <span v-if="icon === 'hashtag'">
-                    <Icon name="hashtag"/>
-                </span>
-                <span v-if="icon === 'comment'">
-                    <Icon name="comment"/>
-                </span>
+                <Icon v-bind:name="icon"/>
                 {{title}}
             </b-navbar-brand>
 

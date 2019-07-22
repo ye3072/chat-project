@@ -27,32 +27,30 @@
         </b-col>
         <b-col cols="9" class="pd0">
           <chat-title v-bind:title="title" v-bind:icon="icon"/>
-          <div style="height:80%; overflow-y:scroll;">
-            <b-card-body ref="content" style="position:relative; height:800px; width:100%; overflow-y:scroll;
+          <div style="height:90%; overflow-y:scroll;">
+            <b-card-body ref="content" style="position:relative; height:700px; width:100%; overflow-y:scroll;
                         float:left;">
               <chat-body v-bind:chatMessage="chatMessage"/>
             </b-card-body>
           </div>
           <div style="height:10%;width:100%;display:table;">
             <div style="display:table-cell;vertical-align:middle;">
-              <b-form inline>
-                  <label class="sr-only" for="inline-form-input-username">Username</label>
-                  <b-input-group class="mb-2 mr-sm-2 mb-sm-0 ml-4 mr-3" style="width:95%;">
-                  <div class="input-group-prepend">
-                      <div class="input-group-text" style="color:rgb(125,125,125);"><Icon name="plus"/></div>
+              <label class="sr-only" for="inline-form-input-username">Username</label>
+              <b-input-group class="mb-2 mr-sm-2 mb-sm-0 ml-4 mr-3" style="width:95%;">
+              <div class="input-group-prepend">
+                  <div class="input-group-text" style="color:rgb(125,125,125);"><Icon name="plus"/></div>
+              </div>
+              <input id="inline-form-input-username" class="form-control" style="margin:0px;height:2.4em;border-right:0px;" type="text"
+                      v-on:keyup.enter="addMessage" v-model="chatInput" v-bind:placeholder="placeholder"/>
+              <div class="input-group-append">
+                  <div class="input-group-text emo" style="background-color:white;">
+                      <Icon name="smile"/>
+                      <span v-on:click="addMessage">
+                          <Icon name="paper-plane"/>
+                      </span>
                   </div>
-                  <b-input id="inline-form-input-username" style="margin:0px;height:2.4em;border-right:0px;" 
-                        v-model="chatInput" v-bind:placeholder="placeholder"></b-input>
-                    <div class="input-group-append">
-                        <div class="input-group-text emo">
-                            <Icon name="smile"/>
-                            <span v-on:click="addMessage()">
-                                <Icon name="paper-plane"/>
-                            </span>
-                        </div>
-                    </div>
-                  </b-input-group>
-              </b-form>
+              </div>
+              </b-input-group>
             </div>
           </div>
         </b-col>
@@ -63,13 +61,14 @@
 <script>
 import ChatTitle from '~/components/ChatTitle.vue'
 import ChatBody from '~/components/ChatBody.vue'
-import ChatText from '~/components/ChatText.vue'
 
 export default {
     components: {
       ChatTitle,
-      ChatBody,
-      ChatText
+      ChatBody
+    },
+    updated: function() {
+      document.querySelector('.card-body').scrollTo(0, document.querySelector('.card-body').scrollHeight) 
     },
     data: function() {
       return {
@@ -85,18 +84,18 @@ export default {
           {id: 3, opponent: 'edsheeran'},
           {id: 4, opponent: 'tony'}
         ],
-        chatInput: null,
-        title: 'let\'s talk!',
-        icon: null,
-        placeholder: 'choose channel',
         chatMessage: [
-          {id: 1, name: 'amy', img: '/_nuxt/assets/src_amy.jpg', time:'07-17 2:12 pm', content: 'Hello'},
-          {id: 2, name: 'yeongeun', img: '/_nuxt/assets/src_paul.png', time:'07-17 2:15 pm', content: 'How are you?'},
-          {id: 3, name: 'amy', img: '/_nuxt/assets/src_amy.jpg', time:'07-17 2:17 pm', content: 'Good, thanx.'},
-          {id: 4, name: 'yeongeun', img: '/_nuxt/assets/src_paul.png', time:'07-17 2:21 pm', content: 'Are you busy now?'},
-          {id: 5, name: 'amy', img: '/_nuxt/assets/src_amy.jpg', time:'07-17 2:25 pm', content: 'Actually, I\'m busy.. We can talk later.'},
-          {id: 6, name: 'yeongeun', img: '/_nuxt/assets/src_paul.png', time:'07-17 2:27 pm', content: 'Oh, I see. I\'ll text you again.'}
-        ]
+          {id: 1, name: 'amy', img: '/_nuxt/assets/src_amy.jpg', time:'07-17 12:12', content: 'Hello'},
+          {id: 2, name: 'yeongeun', img: '/_nuxt/assets/src_paul.png', time:'07-17 12:15', content: 'How are you?'},
+          {id: 3, name: 'amy', img: '/_nuxt/assets/src_amy.jpg', time:'07-17 12:17', content: 'Good, thanx.'},
+          {id: 4, name: 'yeongeun', img: '/_nuxt/assets/src_paul.png', time:'07-17 12:21', content: 'Are you busy now?'},
+          {id: 5, name: 'amy', img: '/_nuxt/assets/src_amy.jpg', time:'07-17 12:25', content: 'Actually, I\'m busy.. We can talk later.'},
+          {id: 6, name: 'yeongeun', img: '/_nuxt/assets/src_paul.png', time:'07-17 12:27', content: 'Oh, I see. I\'ll text you again.'}
+        ],
+        chatInput: null,
+        icon: null,
+        title: 'let\'s talk!',
+        placeholder: 'choose channel'
       }
     },
     methods: {
@@ -109,7 +108,7 @@ export default {
           this.placeholder = 'Message to ' + title
         }
       },
-      addMessage() {
+      addMessage: function() {
         var today = new Date();
         var month = '0' + today.getMonth()
         var date = '0' + today.getDate()
@@ -119,6 +118,8 @@ export default {
                               img: '/_nuxt/assets/src_paul.png', 
                               time: tmp_time, 
                               content: this.chatInput});
+        this.chatInput = null;
+           
       }
     }
   }

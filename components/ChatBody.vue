@@ -1,5 +1,5 @@
 <template>
-    <div style="bottom:20px; width:100%;">
+    <div style="width:100%;">
         <b-card v-for="message in chatMessage" :key="message.id" style="border:0px;"> 
             <b-media>
             <img v-bind:src="message.img" slot="aside" blank-color="#ccc" width="64" height="64"/>

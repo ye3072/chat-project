@@ -37,5 +37,8 @@ module.exports = {
         transpile: [/vue-awesome/]
     },
     plugins: ['~/plugins/vue-awesome.js'],
-    modules: ['bootstrap-vue/nuxt']
+    modules: [
+        'bootstrap-vue/nuxt',
+        'nuxt-babel'        
+    ]
 }

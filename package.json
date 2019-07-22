@@ -13,8 +13,10 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bootstrap-vue": "^2.0.0-rc.26",
     "nuxt": "^2.0.0",
+    "nuxt-babel": "^1.0.1",
     "vue-awesome": "^3.5.4"
   },
   "devDependencies": {

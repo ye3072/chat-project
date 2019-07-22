@@ -4,11 +4,16 @@
             <label class="sr-only" for="inline-form-input-username">Username</label>
             <b-input-group class="mb-2 mr-sm-2 mb-sm-0 ml-4 mr-3" style="width:95%;">
             <div class="input-group-prepend">
-                <div class="input-group-text" style="color:rgb(125,125,125);"><Icon name="plus"/></div>
+                <div class="input-group-text" style="color:rgb(125,125,125);" v-on:click="addMessage()"><Icon name="plus"/></div>
             </div>
             <b-input id="inline-form-input-username" style="border-right:0px;" v-bind:placeholder="placeholder"></b-input>
             <div class="input-group-append">
-                <div class="input-group-text emo"><Icon name="smile"/></div>
+                <div class="input-group-text emo">
+                    <Icon name="smile"/>
+                    <span v-on:click="addMessage()">
+                        <Icon name="paper-plane"/>
+                    </span>
+                </div>
             </div>
             </b-input-group>
         </b-form>
@@ -16,8 +21,18 @@
 </template>
 
 <script>
+import app from '~/pages/index.vue'
+
 export default {
-    props: ['placeholder']
+    props: ['placeholder'],
+    data: function() {
+        app.messages
+    },
+    methods: {
+        addMessage() {
+            alert(app.messages);
+        }
+    }
 }
 </script>
 

@@ -110,7 +110,15 @@ export default {
         }
       },
       addMessage() {
-        this.chatMessage.push({id: this.chatMessage.length + 1, name: 'yeongeun', img: '/_nuxt/assets/src_paul.png', time:'07-17 2:30 pm', content: this.chatInput});
+        var today = new Date();
+        var month = '0' + today.getMonth()
+        var date = '0' + today.getDate()
+        var tmp_time = month.slice(-2) + '-' + date.slice(-2) + ' ' + today.getHours() + ':' + today.getMinutes()
+        this.chatMessage.push({id: this.chatMessage.length + 1, 
+                              name: 'yeongeun', 
+                              img: '/_nuxt/assets/src_paul.png', 
+                              time: tmp_time, 
+                              content: this.chatInput});
       }
     }
   }

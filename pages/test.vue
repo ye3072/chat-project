@@ -1,6 +1,6 @@
 <template>
     <div id="watch-example">
-        yes or no 물어보세요:)
+        yes or no 물어보세요:) <br/>
         <input v-model="question"/>
         <br/><br/>
         <p>

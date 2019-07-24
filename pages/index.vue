@@ -15,7 +15,7 @@
           <b-list-group>
             <b-list-group-item class="bold">Channels</b-list-group-item>
             <b-list-group-item class="pointer" v-for="channel in channels" :key="channel.id" v-on:click="getTitle('hashtag', channel.title)"><Icon name="hashtag"/>
-              {{ channel.title }}
+              {{ channel.name }}
             </b-list-group-item>
             <b-list-group-item class="bold"><Icon name="plus"/>Add a channel</b-list-group-item>
             <b-list-group-item class="bold">Direct Messages</b-list-group-item> 
@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import ChatTitle from '~/components/ChatTitle.vue'
 import ChatBody from '~/components/ChatBody.vue'
 
@@ -67,18 +69,19 @@ export default {
       ChatTitle,
       ChatBody
     },
+    mounted: function() {
+      axios.get("http://127.0.0.1:4000/api/channel/list")              
+      .then(function(ret) {
+        console.log(ret);
+      })
+    },
     updated: function() {
       var cardBody = document.querySelector('.card-body');
       cardBody.scrollTo(0, cardBody.scrollHeight) 
     },
     data: function() {
       return {
-        channels: [
-          {id: 1, title: 'general'},
-          {id: 2, title: 'article'},
-          {id: 3, title: 'daejeon'},
-          {id: 4, title: 'seoul'}
-        ],
+        channels: [],
         messages: [
           {id: 1, opponent: 'amy'},
           {id: 2, opponent: 'ashley'},

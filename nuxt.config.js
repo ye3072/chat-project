@@ -39,6 +39,16 @@ module.exports = {
     plugins: ['~/plugins/vue-awesome.js'],
     modules: [
         'bootstrap-vue/nuxt',
-        'nuxt-babel'        
-    ]
+        'nuxt-babel',
+        '@nuxtjs/axios',
+        '@nuxtjs/proxy'
+    ],
+    proxy: {
+        '/api': {
+            target: 'http://127.0.0.1:4000',
+            pathRewrite: {
+                '^/api': '/'
+            }
+        }
+    }
 }

@@ -18,9 +18,12 @@
     "bootstrap-vue": "^2.0.0-rc.26",
     "nuxt": "^2.0.0",
     "nuxt-babel": "^1.0.1",
+    "proxy": "^0.2.4",
     "vue-awesome": "^3.5.4"
   },
   "devDependencies": {
+    "@nuxtjs/axios": "^5.5.4",
+    "@nuxtjs/proxy": "^1.3.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^4.19.1",
     "eslint-friendly-formatter": "^4.0.1",

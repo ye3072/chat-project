@@ -123,8 +123,8 @@ export default {
     beforeMount: function() {
       
     },
-    mounted: function() {
-      axios.get("http://localhost:4000/api/channel/list")
+    mounted: async function() {
+      await axios.get("http://localhost:4000/api/channel/list")
         .then(function(res) {
           this.channels = res.data
           console.log(res.data)

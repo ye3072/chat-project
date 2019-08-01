@@ -36,7 +36,13 @@ module.exports = {
         },
         transpile: [/vue-awesome/]
     },
-    plugins: ['~/plugins/vue-awesome.js'],
+    generate: {
+      dir: '../src/main/resources/static',
+      subFolders: false
+    },
+    plugins: [
+        '~/plugins/vue-awesome.js'
+    ],
     modules: [
         'bootstrap-vue/nuxt',
         'nuxt-babel',
@@ -45,10 +51,13 @@ module.exports = {
     ],
     proxy: {
         '/api': {
-            target: 'http://127.0.0.1:4000',
+            target: 'http://localhost:4000',
             pathRewrite: {
                 '^/api': '/'
             }
         }
+    },
+    router: {
+        base: '/'
     }
 }

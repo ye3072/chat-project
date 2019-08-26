@@ -12,7 +12,12 @@
 
 ``` bash
 # 사용한 모듈
-bootstrap-vue, babel, axios, 
+# 1. bootstrap-vue
+$ npm install bootstrap-vue
+# 2. vue-awesome
+$ npm install vue-awesome (recommended)
+or
+$ bower install vue-awesome
 
 # install dependencies
 $ npm install # Or yarn install

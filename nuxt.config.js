@@ -49,13 +49,11 @@ module.exports = {
         '@nuxtjs/axios',
         '@nuxtjs/proxy'
     ],
+    axios: {
+        proxy: true
+    },
     proxy: {
-        '/api': {
-            target: 'http://localhost:4000',
-            pathRewrite: {
-                '^/api': '/'
-            }
-        }
+        '/api/': 'http://localhost:4000'
     },
     router: {
         base: '/'
